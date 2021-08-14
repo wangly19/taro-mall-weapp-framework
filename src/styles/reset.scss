@@ -1,0 +1,25 @@
+/**
+ * 统一多端基础样式
+ * 比较理想的是 View 标签统一为 display: flex; flex-direction: column
+ * 但是 H5 上内置组件样式可能会错乱，因此暂时不这样处理，有用到 flex 的地方都显式声明主轴方向即可
+ */
+
+/* weapp */
+
+html{
+  height: calc(100% - env(safe-area-inset-bottom)) !important;
+  height: calc(100% - constant(safe-area-inset-bottom)) !important
+}
+
+page {
+  -webkit-overflow-scrolling: touch;
+}
+
+view {
+  box-sizing: border-box;
+}
+
+taro-view-core{
+  box-sizing: border-box;
+  width: 100%;
+}
