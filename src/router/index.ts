@@ -24,11 +24,11 @@ class Router {
    */
   stringifyRoute(params: RouteParams): string {
 
-    const { url, query } = params
+    const parseUrl: string = params.url.startsWith('/') ? params.url : `/${params.url}`
 
     const qsRouteUrl: string = qs.stringifyUrl({
-      url,
-      query
+      url: parseUrl,
+      query: params.query
     })
     return qsRouteUrl
   }
@@ -40,7 +40,7 @@ class Router {
    */
   getCurrentPageView (url: string): Route {
 
-    const currentRoute: Route | undefined = this.routes.find(el => el.path === url)
+    const currentRoute: Route | undefined = this.routes.find(el => url.includes(el.path))
 
     if (!currentRoute) throw new Error(`[ Router Error ]: ${url}地址不存在，请检查当前地址是否正确。`)
 
@@ -104,8 +104,28 @@ class Router {
     }
   }
 
-  reLaunch() {
+  reLaunch(params: RouteParams ) {
+
+    const qsRouteUrl = this.stringifyRoute(params)
+
+    this.getCurrentPageView(params.url)
+
+    return Taro.reLaunch({
+      url: qsRouteUrl
+    })
     
+  }
+
+  reHome(query?: RouteParams['query']) {
+    if (query) {
+      return this.reLaunch({
+        url: 'pages/home/index',
+        query
+      })
+    }
+    return this.reLaunch({
+      url: 'pages/home/index',
+    })
   }
   
 }

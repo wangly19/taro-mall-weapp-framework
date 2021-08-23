@@ -1,25 +1,15 @@
-import { Component } from 'react'
+import React, { FC } from 'react'
 import { View, Text } from '@tarojs/components'
-import { CuButton } from 'taro-color-ui'
 import './index.scss'
 
-export default class Index extends Component {
 
-  componentWillMount () { }
+const DefaultIndex: FC = () => {
 
-  componentDidMount () { }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  render () {
-    return (
-      <View className='index'>
-        <Text>Hello world!</Text>
-      </View>
-    )
-  }
+  return (
+    <View className='index'>
+  <Text>Hello world!</Text>
+</View>
+  )
 }
+
+export default DefaultIndex

@@ -4,6 +4,7 @@ declare module '@/config/routes' {
     path: string;
     useAuth: boolean;
     isTab: boolean;
+    selectIcons?: string[]
   }
 
   export interface TabRoute {

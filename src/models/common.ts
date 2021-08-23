@@ -1,35 +1,25 @@
-import Taro from "@tarojs/taro";
 import { createModel } from "@rematch/core";
 import { RootModel } from "./connect";
 
 
 interface CommonState {
-  systemInfo: Taro.getSystemInfoSync.Result | null
+  selectTabBarPath: string
 }
 
 const initializeCommonState: CommonState = {
-  systemInfo: null
+  /** @name 切换选中的tab */
+  selectTabBarPath: ''
 }
 
 export default createModel<RootModel>()({
   name: 'common',
   state: initializeCommonState,
   reducers: {
-    setSystemInfo(state, payload: CommonState['systemInfo']) {
+    setTabBarSelectPath: (state: CommonState, path: string) => {
       return {
         ...state,
-        systemInfo: payload
+        selectTabBarPath: path
       }
-    },
+    }
   },
-  effects: (dispatch) => ({
-    /**
-     * 获取当前设备信息
-     */
-    async getSystemInfoSync() {
-      const systemInfo = await Taro.getSystemInfoSync()
-      console.log(systemInfo, 'systemInfo')
-      dispatch.common.setSystemInfo(systemInfo)
-    },
-  }),
 });

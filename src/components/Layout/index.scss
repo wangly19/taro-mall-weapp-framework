@@ -1,6 +1,9 @@
 .weapp-layout {
   height: 100vh;
+  background: $custom-body-bg;
   &__header {
+    width: 100%;
+    background: $custom-navbar-bg;
     &__navbar {
       height: 100%;
       padding: 0 20px;
@@ -21,5 +24,9 @@
         font-weight: bold;
       }
     }
+  }
+
+  &__content {
+    width: 100%;
   }
 }

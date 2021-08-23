@@ -10,24 +10,13 @@ declare module '*.less';
 declare module '*.scss';
 declare module '*.sass';
 declare module '*.styl';
-
-declare const wx: any
+declare module '@/config/router' {
+  const routerConfig: string
+  export default routerConfig
+}
 
 declare namespace NodeJS {
   interface ProcessEnv {
     TARO_ENV: 'weapp' | 'swan' | 'alipay' | 'h5' | 'rn' | 'tt' | 'quickapp' | 'qq' | 'jd'
   }
-}
-
-
-declare namespace Router {
-  interface Route {
-    isTab
-    path: string,
-  }
-}
-
-declare module '@/config/router' {
-  const routerConfig: string
-  export default routerConfig
 }

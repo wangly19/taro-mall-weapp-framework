@@ -20,8 +20,8 @@
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types",
-      "global.d.ts",
       "src/**/*",
+      "/global.d.ts",
     ],
     "paths": {
       "@/*": ["./src/*"],

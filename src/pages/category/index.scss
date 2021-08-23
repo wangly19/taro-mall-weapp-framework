@@ -1,4 +1,11 @@
 .category-view {
-  &__slide {}
-  &__body {}
+  height: 100%;
+  @include flex($justifyContent: flex-start, $alignItems: flex-start);
+  &__slide {
+    height: 100%;
+    background: $side-bar-bg;
+  }
+  &__body {
+    flex: 1;
+  }
 }

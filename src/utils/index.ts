@@ -1,4 +1,5 @@
 import Taro from "@tarojs/taro"
+import { TAB_BAR_HEIGHT } from '@/utils/shard'
 
 /**
  * 获取当前导航条信息高度
@@ -9,8 +10,6 @@ export function getNavBarInfo () {
   const systemInfo = Taro.getSystemInfoSync()
 
   const capsuleInfo = Taro.getMenuButtonBoundingClientRect()
-
-  console.log(capsuleInfo, 'capsuleInfo')
   
   if (systemInfo && capsuleInfo) {
     const navHeight = (
@@ -18,6 +17,10 @@ export function getNavBarInfo () {
     ) * 2 + capsuleInfo.height + systemInfo.statusBarHeight;
     return {
       navHeight,
+      screen: {
+        height: systemInfo.screenHeight,
+        body: systemInfo.screenHeight - TAB_BAR_HEIGHT - navHeight
+      },
       menu: {
         height: capsuleInfo.height,
         width: capsuleInfo.width,
@@ -30,6 +33,10 @@ export function getNavBarInfo () {
   }
   return {
     navHeight: 0,
+    screen: {
+      height: 0,
+      body: 0,
+    },
     menu: {
       height: 0,
       width: 0,

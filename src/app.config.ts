@@ -12,5 +12,7 @@ module.exports =  {
     navigationBarBackgroundColor: '#fff',
     navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'black'
+  },
+  usingComponents: {
   }
 }
