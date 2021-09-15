@@ -1,0 +1,25 @@
+.operation-bar {
+  @include flex($justifyContent: space-between);
+  height: 112px;
+  width: 100%;
+  background: $white-color;
+  padding: 0 24px;
+  &__radio {
+    @include flex($justifyContent: space-between);
+    &__text {
+      padding-left: 12px;
+      font-weight: normal;
+    }
+  }
+  &__price {
+    flex: 1;
+    text-align: right;
+    padding: 0 40px;
+    &__total {
+      color: $primary-color;
+    }
+  }
+  &__btn {
+    width: 200px;
+  }
+}

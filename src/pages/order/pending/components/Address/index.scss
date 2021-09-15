@@ -1,0 +1,8 @@
+.order-pending {
+  &__address {
+    background: $white-color;
+    &__empty {
+      // @include flex($justifyContent: space-between);
+    }
+  }
+}

@@ -2,12 +2,12 @@ import Taro from '@tarojs/taro'
 import routerConfig from '@/config/routes'
 import qs from 'query-string'
 import type { Route } from '@/config/routes'
+export { useRouter } from '@tarojs/taro'
 
 interface RouteParams {
   url: string,
   query?: qs.StringifiableRecord,
 }
-
 
 class Router {
 
@@ -29,7 +29,7 @@ class Router {
     const qsRouteUrl: string = qs.stringifyUrl({
       url: parseUrl,
       query: params.query
-    })
+    }, { encode: false })
     return qsRouteUrl
   }
 
@@ -82,6 +82,8 @@ class Router {
 
     const currentRoute = this.getCurrentPageView(params.url)
 
+    console.log(qsRouteUrl, currentRoute, 'currentRoute')
+
     /** @if 判断当前页面是否是tab页面 */
     if (currentRoute.isTab) {
       return Taro.switchTab({
@@ -117,6 +119,7 @@ class Router {
   }
 
   reHome(query?: RouteParams['query']) {
+    console.log(this.reLaunch, 'relunch')
     if (query) {
       return this.reLaunch({
         url: 'pages/home/index',

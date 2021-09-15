@@ -13,6 +13,4 @@ module.exports =  {
     navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'black'
   },
-  usingComponents: {
-  }
 }

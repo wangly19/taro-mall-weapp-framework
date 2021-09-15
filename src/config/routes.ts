@@ -7,6 +7,12 @@ const router = [
     selectIcons: ['/icons/tab-bar/home.png', '/icons/tab-bar/home-active.png']
   },
   {
+    name: '首页',
+    path: 'pages/home/micpage/index',
+    useAuth: false,
+    isTab: false,
+  },
+  {
     name: '分类',
     path: 'pages/category/index',
     useAuth: false,
@@ -27,13 +33,18 @@ const router = [
     isTab: true,
     selectIcons: ['/icons/tab-bar/my.png', '/icons/tab-bar/my-active.png']
   },
-
   {
-    name: '测试',
-    path: 'pages/index/index',
+    name: '会员登录',
+    path: 'pages/auth/index',
+    useAuth: false,
+    isTab: false,
+  },
+  {
+    name: '确认订单',
+    path: 'pages/order/pending/index',
     useAuth: true,
     isTab: false,
-  }
+  },
 ]
 
 const getTabBarRoutes = () => {

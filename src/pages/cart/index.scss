@@ -1,0 +1,8 @@
+.cart-container {
+  height: 100%;
+  @include flex(
+    $direction: column, 
+    $justifyContent: flex-start, 
+    $alignItems: flex-start
+  );
+}

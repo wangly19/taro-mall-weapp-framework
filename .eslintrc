@@ -1,5 +1,8 @@
 {
   "extends": ["taro/react"],
+  "global": {
+    "wx": true
+  },
   "rules": {
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",

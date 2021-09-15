@@ -1,9 +1,8 @@
 import React, { FC } from 'react'
 import { View, Text } from '@tarojs/components'
-import './index.scss'
 
 
-const DefaultIndex: FC = () => {
+const OrderList: FC = () => {
 
   return (
     <View className='index'>
@@ -12,4 +11,4 @@ const DefaultIndex: FC = () => {
   )
 }
 
-export default DefaultIndex
+export default OrderList

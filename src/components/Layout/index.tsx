@@ -1,13 +1,15 @@
 import React, { useMemo, useRef, CSSProperties } from "react"
 import { View } from "@tarojs/components"
 import { getNavBarInfo } from "@/utils"
+import useRouterAuth from "@/hooks/useRouterAuth"
 import NavBar from "./NavBar"
 import "./index.scss"
 
 interface LayoutProps {
   title: string,
-  menu?: string[],
-  clearHeight?: boolean
+  menu?: ['BACK'] | ['HOME'] | ['BACK', 'HOME'] | [],
+  clearHeight?: boolean,
+  customNavBar?: React.ReactNode,
 }
 
 const Layout: React.FC<LayoutProps> = (props) => {
@@ -16,6 +18,8 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const navHeightRef = useRef<ReturnType<typeof getNavBarInfo>>(
     getNavBarInfo()
   )
+
+  const isTab = useRouterAuth()
 
   /**@MemoValue 当前导航条样式计算 */
   const navBarStyle: CSSProperties = useMemo(() => {
@@ -26,17 +30,22 @@ const Layout: React.FC<LayoutProps> = (props) => {
     }
   }, [])
 
+  console.log(props.customNavBar, 'customNavBar')
+
   return (
     <View className='weapp-layout'>
-      <View className='weapp-layout__header' style={navBarStyle}>
-        <NavBar title={props.title} menu={props.menu || []} />
-      </View>
-      <View className='weapp-layout__content' style={{
-        height: props.clearHeight ? '100%' : navHeightRef.current.screen.body 
-      }}
-      >
+      {
+        props.customNavBar ? props.customNavBar :
+        <View className='weapp-layout__header' style={navBarStyle}>
+          <NavBar title={props.title} menu={props.menu || []} />
+        </View>
+      }
+      <View className='weapp-layout__content'>
         {props.children}
       </View>
+      {
+        isTab && <View className="weapp-layout__footer" />
+      }
     </View>
   );
 };

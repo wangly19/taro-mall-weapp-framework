@@ -3,21 +3,19 @@ import { View } from '@tarojs/components'
 import { useSelector } from 'react-redux'
 import type { RootState } from '@/models'
 import Layout from '@/components/Layout'
-import pageViewConfig from './index.config'
+import OperationBar from './components/OperationBar'
+import ProductList from './components/ProductList'
+import MarketingBar from './components/MarketingBar'
+import './index.scss'
 
 const Cart = () => {
 
-  const selectTabBarPath = useSelector((state: RootState) => {
-    return state.common
-  })
-
   return (
-    <Layout title={pageViewConfig.navigationBarTitleText}>
-      1111
-      <View>
-        {
-          JSON.stringify(selectTabBarPath)
-        }
+    <Layout title="购物车">
+      <View className="cart-container">
+        <MarketingBar/>
+        <ProductList/>
+        <OperationBar/>
       </View>
     </Layout>
   )

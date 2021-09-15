@@ -1,5 +1,4 @@
 import Taro from "@tarojs/taro"
-import { TAB_BAR_HEIGHT } from '@/utils/shard'
 
 /**
  * 获取当前导航条信息高度
@@ -19,7 +18,7 @@ export function getNavBarInfo () {
       navHeight,
       screen: {
         height: systemInfo.screenHeight,
-        body: systemInfo.screenHeight - TAB_BAR_HEIGHT - navHeight
+        body: systemInfo.screenHeight - navHeight
       },
       menu: {
         height: capsuleInfo.height,
@@ -45,4 +44,13 @@ export function getNavBarInfo () {
       top: 0
     }
   }
+}
+
+/**
+ * 
+ * @param val 当前传入的值
+ * @returns 与compareVal的最小值
+ */
+export function getMinValue (val: number, compareVal?: number) {
+  return Math.min(val, compareVal || 0)
 }
