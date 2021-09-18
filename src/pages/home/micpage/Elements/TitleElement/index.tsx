@@ -1,5 +1,5 @@
 import { View } from '@tarojs/components'
-import React, { CSSProperties, useMemo } from 'react'
+import React, { CSSProperties } from 'react'
 
 interface MicPageTitleProps {
   style?: CSSProperties,
